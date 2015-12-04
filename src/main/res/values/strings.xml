@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_search">Search</string>
+
+
+    <string name="app_name">MovieList</string>
+    <string name="app_label">MovieList</string>
+
+    <string name="generalMessageError">There was an error. Please tap on the \"Reload\" button to try again</string>
+    <string name="generalMessageEmpty">Start to enjoy MovieList adding your first film</string>
+
+    <string name="reload">Add Movie</string>
+
+    <string name="caratula">Cover</string>
+    <string name="search_hint">Search movies</string>
+    <string name="_new">New</string>
+    <string name="_modify">Modify</string>
+    <string name="_view">View</string>
+    <string name="_delete">Delete</string>
+    <string name="_list">List</string>
+    <string name="_search">Search</string>
+    <string name="_blank" />
+    <string name="_tabdetail">Details</string>
+    <string name="_tabsinopsis">Sinopsis</string>
+    <string name="_tabcover">Cover</string>
+    <string name="_title">Title</string>
+    <string name="_format">Format</string>
+    <string name="_loan">Loan</string>
+    <string name="_yes">Yes</string>
+    <string name="_no">No</string>
+    <string name="_duration">Duration</string>
+    <string name="_gender">Gender</string>
+    <string name="_sinopsis">Sinopsis</string>
+    <string name="_filters">Active search filter. Press to remove</string>
+    <string name="_clear">Clean filters</string>
+    <string name="_advancedSearch">Advanced Search</string>
+    <string name="_import">Import</string>
+    <string name="_preferences">Preferences</string>
+    <string name="_ok">Ok</string>
+    <string name="_get_barcode">Barcode</string>
+
+    <string-array name="_formats">
+        <item>DVD</item>
+        <item>Blu-Ray</item>
+        <item>Otro</item>
+    </string-array>
+    <string-array name="_genders">
+        <item></item>
+        <item>Adventure</item>
+        <item>Action</item>
+        <item>Comedy</item>
+        <item>Science Fiction</item>
+        <item>Drama</item>
+        <item>Historical</item>
+        <item>Fantastic</item>
+        <item>Romantic</item>
+        <item>Animation</item>
+        <item>Romantic Comedy</item>
+        <item>Terror</item>
+        <item>Thriller</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="_save">Save</string>
+    <string name="_cancel">Cancel</string>
+    <string name="_quit_without_save">Do you want to quit without saving?</string>
+    <string name="_camera">Camera</string>
+    <string name="_gallery">Gallery</string>
+    <string name="_selectImage">Select Source</string>
+    <string name="_delete_current_film">Do you want to delete the selected movie?</string>
+    <string name="_select_option">Select option</string>
+    <string name="_fied_required">Mandatory field</string>
+    <string name="_title_required">The title should be informed</string>
+    <string name="_internet">Internet</string>
+    <string name="search">Search</string>
+    <string name="movies">Movies</string>
+    <string name="people">People</string>
+    <string name="no_imdb_id_found">Sorry, no IMDB page exists for this movie</string>
+    <string name="no_image_found">Sorry, no image found for this movie</string>
+    <string name="no_movies_found">No movies have been found</string>
+    <string name="close">Close</string>
+    <string name="no_movie_selected">You have not selected any film</string>
+    <string name="_visit_imdb">Visit IMDB</string>
+    <string name="_view_full_image">Show cover</string>
+    <string name="_import_list">Importa list</string>
+    <string name="_updatingDatabase">Updating database. Please wait ...</string>
+    <string name="_pleaseWait">Please wait...</string>
+    <string name="_retrievingData">Obtaining data...</string>
+    <string name="_loading">Loading. Please waitr...</string>
+    <string name="_EmptyList">No loaded movies</string>
+    <string name="_barcode">Barcode</string>
+    <string name="_dvd">DVD</string>
+    <string name="_otro">Other</string>
+    <string name="_bluray">Blu-Ray</string>
+    <string name="_score">Score: </string>
+    <string name="_releaseDate">Release Date: </string>
+    <string name="_language">Language: </string>
+    <string name="_error">Error</string>
+    <string name="_no_internet_conection">No connection to Internet</string>
+    <string name="_barcode_found">It has identified the barcode. Would you like to update data with IMDB?</string>
+    <string name="_barcode_not_found">Barcode not found</string>
+    <string name="_view_trailer">View trailer</string>
+    <string name="no_trailer_found">No trailer found</string>
+    <string name="_showList">View list</string>
+    <string name="_showGrid">View grid</string>
+    <string name="_showGallery">View gallery</string>
+    <string name="_lowMemory">The device does not have enough memory to display the covers. Restarts the application</string>
+
+
+    <string name="action_share">Share</string>
+    <string name="send_to">Send to...</string>
+    <string name="share_videodroid">Download MovieList at Google Play https://play.google.com/store/apps/details?id=com.maraldesarrollos.videodroid</string>
+
+    <string name="action_updatecover">Update cover</string>
+    <string name="_titile">Title</string>
+</resources>

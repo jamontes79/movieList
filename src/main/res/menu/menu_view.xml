@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_delete" android:title="@string/_delete"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:orderInCategory="100" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_modify" android:title="@string/_modify"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:orderInCategory="150" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_view_trailer" android:title="@string/_view_trailer"
+          android:icon="@drawable/ic_menu_youtube"
+          android:orderInCategory="300" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_view_imdb" android:title="@string/_visit_imdb"
+          android:icon="@android:drawable/ic_menu_set_as"
+          android:orderInCategory="400" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_share" android:title="@string/action_share"
+          android:icon="@android:drawable/ic_menu_share"
+          android:orderInCategory="500" app:showAsAction="never"/>
+
+</menu>

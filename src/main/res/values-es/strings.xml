@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="action_search">Buscar</string>
+    <string name="app_name">MovieList</string>
+    <string name="app_label">MovieList</string>
+    <string name="search_hint">Busca películas</string>
+    <string name="_new">Nueva</string>
+    <string name="_modify">Modificar</string>
+    <string name="_view">Consultar</string>
+    <string name="_delete">Eliminar</string>
+    <string name="_list">Lista</string>
+    <string name="_search">Buscar</string>
+    <string name="_blank" />
+    <string name="_tabdetail">Detalles</string>
+    <string name="_tabsinopsis">Sinopsis</string>
+    <string name="_tabcover">Carátula</string>
+    <string name="_titile">Título</string>
+    <string name="_format">Formato</string>
+    <string name="_loan">Prestada</string>
+    <string name="_yes">Si</string>
+    <string name="_no">No</string>
+    <string name="_duration">Duración</string>
+    <string name="_gender">Género</string>
+    <string name="_sinopsis">Sinopsis</string>
+    <string name="_filters">Filtros de búsqueda activos. Pulse para eliminarlos</string>
+    <string name="_clear">Limpiar filtros</string>
+    <string name="_advancedSearch">Búsqueda avanzada</string>
+    <string name="_import">Importar</string>
+    <string name="_preferences">Preferencias</string>
+    <string name="_ok">Ok</string>
+    <string name="_get_barcode">Código de barras</string>
+
+    <string-array name="_formats">
+        <item>DVD</item>
+        <item>Blu-Ray</item>
+        <item>Otro</item>
+    </string-array>
+    <string-array name="_genders">
+        <item></item>
+        <item>Aventura</item>
+        <item>Acción</item>
+        <item>Comedia</item>
+        <item>Ciencia ficción</item>
+        <item>Drama</item>
+        <item>Histórica</item>
+        <item>Fantástica</item>
+        <item>Romántica</item>
+        <item>Animación</item>
+        <item>Comedia Romántica</item>
+        <item>Terror</item>
+        <item>Suspense</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string name="_save">Grabar</string>
+    <string name="_cancel">Cancelar</string>
+    <string name="_quit_without_save">¿Desea salir sin grabar?</string>
+    <string name="_camera">Cámara</string>
+    <string name="_gallery">Galeria</string>
+    <string name="_selectImage">Seleccionar origen</string>
+    <string name="_delete_current_film">¿Desea eliminar la pelicula seleccionada?</string>
+    <string name="_select_option">Seleccione opción</string>
+    <string name="_fied_required">Dato obligatorio</string>
+    <string name="_title_required">El título debe estar informado</string>
+    <string name="_internet">Internet</string>
+    <string name="search">Buscar</string>
+    <string name="movies">Películas</string>
+    <string name="people">People</string>
+    <string name="no_imdb_id_found">Lo siento, Esta película no existe en IMDB</string>
+    <string name="no_image_found">Lo siento, no se han encontrado carátulas para esta película</string>
+    <string name="no_movies_found">No se han encontrado películas</string>
+    <string name="close">Cerrar</string>
+    <string name="no_movie_selected">No ha seleccionado ninguna película</string>
+    <string name="_visit_imdb">Ver en  IMDB</string>
+    <string name="_view_full_image">Ver carátula</string>
+    <string name="_import_list">Importar lista</string>
+    <string name="_updatingDatabase">Actualizando base de datos. Espere...</string>
+    <string name="_pleaseWait">Espere, por favor...</string>
+    <string name="_retrievingData">Obteniendo datos...</string>
+    <string name="_loading">Loading. Please wait...</string>
+    <string name="_EmptyList">No hay películas cargadas</string>
+    <string name="_barcode">Código de barras</string>
+    <string name="_dvd">DVD</string>
+    <string name="_otro">Otro</string>
+    <string name="_bluray">Blu-Ray</string>
+    <string name="_score">Puntuación: </string>
+    <string name="_releaseDate">Fecha de estreno: </string>
+    <string name="_language">Idioma: </string>
+    <string name="_error">Error</string>
+    <string name="_no_internet_conection">No hay conexión a internet</string>
+    <string name="_barcode_found">Se ha identificado su código de barras.¿Desea actualizar los datos con IMDB?</string>
+    <string name="_barcode_not_found">Código de barras no encontrado</string>
+    <string name="_view_trailer">Ver trailer</string>
+    <string name="no_trailer_found">Trailer no encontrado</string>
+    <string name="_showList">Ver lista</string>
+    <string name="_showGrid">Ver grid</string>
+    <string name="_showGallery">Ver galería</string>
+<string name="_lowMemory">El dispositivo no tiene suficiente memoria para mostrar las carátulas. Se reiniciará la aplicación</string>
+    <string name="action_updatecover">Actualizar carátula</string>
+    <string name="_title">Título</string>
+    <string name="action_share">Compartir</string>
+    <string name="caratula">Carátula</string>
+    <string name="generalMessageEmpty">Empieza a disfrutar de MovieList y añade tu primera película</string>
+    <string name="generalMessageError">Se ha producido un error. Por favor pulsa en \"Recargar\" para reintentar</string>
+    <string name="reload">Añadir Película</string>
+    <string name="send_to">Enviar...</string>
+    <string name="share_videodroid">Descarga MovieList en Google Play https://play.google.com/store/apps/details?id=com.maraldesarrollos.videodroid</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_json_peliculas">http://scala-days-2015.s3.amazonaws.com/conferences.json</string>
+</resources>

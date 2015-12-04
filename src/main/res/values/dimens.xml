@@ -1,0 +1,74 @@
+<!--
+  ~ Copyright (C) 2015 47 Degrees, LLC http://47deg.com hello@47deg.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may
+  ~ not use this file except in compliance with the License. You may obtain
+  ~ a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="elevation_low">9dp</dimen>
+    <dimen name="elevation_high">12dp</dimen>
+    <dimen name="fab_elevation">4dp</dimen>
+    <dimen name="image_width">120dp</dimen>
+    <dimen name="image_final_width">32dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+    <!-- Default -->
+    <dimen name="radius">3dp</dimen>
+    <dimen name="padding_default_micro">2dp</dimen>
+    <dimen name="padding_default_small">4dp</dimen>
+    <dimen name="padding_default">8dp</dimen>
+    <dimen name="padding_default_large">8dp</dimen>
+    <dimen name="padding_default_xlarge">16dp</dimen>
+
+    <!-- Material List -->
+    <dimen name="height_material_list_image">200dp</dimen>
+
+    <!-- Fab Button -->
+    <dimen name="size_fab_button">56dp</dimen>
+    <dimen name="margin_schedule_detail_fab_left">12dp</dimen>
+    <dimen name="margin_list_fab_right">290dp</dimen>
+    <dimen name="margin_schedule_detail_fab_top">102dp</dimen>
+    <dimen name="margin_list_fab_bottom">380dp</dimen>
+
+
+    <dimen name="size_schedule_avatar">28dp</dimen>
+
+    <dimen name="size_avatar">170dp</dimen>
+
+
+    <dimen name="padding_default_extra_small">4dp</dimen>
+    <dimen name="padding_default_big">30dp</dimen>
+
+    <dimen name="padding_schedule_detail_fab">10dp</dimen>
+
+    <dimen name="padding_fab_shadow">8dp</dimen>
+
+    <dimen name="height_toolbar">56dp</dimen>
+    <dimen name="height_toolbar_expanded">124dp</dimen>
+    <dimen name="height_header">44dp</dimen>
+
+
+    <dimen name="width_button">160dp</dimen>
+    <dimen name="margin_line_decorator_left">72dp</dimen>
+
+    <dimen name="stroke_schedule_detail_fab">2dp</dimen>
+
+    <integer name="text_huge">24</integer>
+    <integer name="text_big">16</integer>
+    <integer name="text_medium">14</integer>
+    <integer name="text_small">12</integer>
+
+</resources>
