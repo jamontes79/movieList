@@ -143,7 +143,7 @@ case class Movie(
           sourceThmb.delete
         }
       }
-      case None => _
+
     }
   }
 
