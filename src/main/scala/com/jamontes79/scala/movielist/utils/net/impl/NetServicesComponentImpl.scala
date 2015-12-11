@@ -8,6 +8,7 @@ import com.jamontes79.scala.movielist.utils.MyUtils._
 import com.jamontes79.scala.movielist.utils.net._
 import com.jamontes79.scala.movielist.utils.{ContextWrapperProvider, FileUtils, NetUtils}
 
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success, Try}
@@ -29,7 +30,16 @@ trait NetServicesComponentImpl
   class NetServicesImpl
     extends NetServices {
 
+    def cleanTitleFromContent(content :String) : String = {
+      var title = ""
+      if (content.length > 0) {
+        title = content.substring(content.indexOf("<title>"), content.indexOf("- CeX"))
+        Log.e("barcode", title.replace("<title>", ""))
+        title = title.replace("<title>", "")
 
+      }
+      title
+    }
     override def saveJsonGenericInLocal: Service[NetRequest, NetResponse] = request =>
       Future {
         val file = loadJsonFile(contextProvider,2)
@@ -41,6 +51,17 @@ trait NetServicesComponentImpl
             case Success(true) => NetResponse(success = true, downloaded = true)
             case _ => NetResponse(success = false, downloaded = false)
           }
+
+      }
+    override def  getTitleFromSKU: Service[NetRequest, NetResponseExtended] =  request =>
+      Future {
+
+        val result = getContent(request.url)
+
+        result match {
+          case Success(_) => NetResponseExtended(success = true, downloaded = true,content = cleanTitleFromContent(result.getOrElse("")))
+          case _ => NetResponseExtended(success = false, downloaded = false,content =  "")
+        }
 
       }
     override def saveJsonInLocal: Service[NetRequest, NetResponse] = request =>

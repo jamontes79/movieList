@@ -17,9 +17,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.OnTouchListener
 import android.view.{Menu, MenuItem, MotionEvent, View}
-import android.widget.{ArrayAdapter, Toast}
+import android.widget.ArrayAdapter
 import com.fortysevendeg.macroid.extras.ImageViewTweaks._
 import com.fortysevendeg.macroid.extras.TextTweaks._
+import com.google.zxing.integration.android.IntentIntegrator
 import com.jamontes79.MyUtil
 import com.jamontes79.scala.movielist.composers.DetailComposer
 import com.jamontes79.scala.movielist.dialog.SelectImageDialog
@@ -163,84 +164,113 @@ with ComponentRegistryImpl {
     selectImageDialog.show(fm, "Dialog Fragment");
   }
 
+  def setBarCode(barcode : String) = {
+    currentMovie.barcode = Some(barcode)
+    searchTitle(barcode).onComplete{
+      case Success(titleFound) => {
+        runUi(
+          (txtTitle <~ tvText(titleFound))
 
+        )
+        runUi {(macroid.DialogBuilding.dialog(getString(R.string._barcode_found)) <~
+          positiveYes( Ui {
+             searchImdb
+          }) <~ title( getString(R.string._barcode)) <~
+          negativeNo(Ui {}))<~ speak}
+
+
+      }
+      case Failure(t) => runUi {toast(R.string._barcode_not_found)<~ fry}
+    }
+
+
+  }
   override def onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Unit = {
     super.onActivityResult(requestCode, resultCode, data)
+    val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+    if (scanResult != null && resultCode == Activity.RESULT_OK) {
+      // handle scan result
+      val currEan = scanResult.getContents()
+      setBarCode(currEan)
+    }
 
-    if (requestCode == MyUtils.SELECT_PICTURE) {
-      if (data != null) {
-        val fileName = MyUtil.getRealPathFromURI(this, data.getData)
+    else {
+
+      if (requestCode == MyUtils.SELECT_PICTURE) {
+        if (data != null) {
+          val fileName = MyUtil.getRealPathFromURI(this, data.getData)
+
+          val dir = new File(MyUtils.STORAGE_IMAGES)
+          if (!dir.exists()) {
+            dir.mkdirs()
+          }
+          val output = new File(dir, MyUtils.TEMP_IMAGE)
+          val srcChannel = new FileInputStream(fileName).getChannel()
+          val dstChannel = new FileOutputStream(output.getAbsolutePath).getChannel()
+          dstChannel.transferFrom(srcChannel, 0, srcChannel.size())
+          hasImage = true
+          runUi(
+            imgCover <~
+              ivSrc(BitmapFactory.decodeStream(new BufferedInputStream(this.getContentResolver.openInputStream(data.getData()))))
+
+          )
+        }
+      }
+      else if (requestCode == MyUtils.TAKE_PICTURE) {
+        val o = new BitmapFactory.Options()
+        o.inSampleSize = 8
 
         val dir = new File(MyUtils.STORAGE_IMAGES)
-        if (!dir.exists()) {
-          dir.mkdirs()
-        }
         val output = new File(dir, MyUtils.TEMP_IMAGE)
-        val srcChannel = new FileInputStream(fileName).getChannel()
-        val dstChannel = new FileOutputStream(output.getAbsolutePath).getChannel()
-        dstChannel.transferFrom(srcChannel, 0, srcChannel.size())
+        val imageName = output.getAbsolutePath()
+        var tmpBmp = BitmapFactory.decodeFile(imageName, o)
+
+        if (tmpBmp.getWidth() > tmpBmp.getHeight()) {
+          val matrix = new Matrix()
+          matrix.postRotate(90)
+          tmpBmp = Bitmap.createBitmap(tmpBmp, 0, 0, tmpBmp.getWidth(), tmpBmp.getHeight(), matrix, true)
+        }
+        tmpBmp = Bitmap.createScaledBitmap(tmpBmp, imgCover.get.getWidth(), imgCover.get.getHeight(), true)
         hasImage = true
         runUi(
           imgCover <~
-            ivSrc(BitmapFactory.decodeStream(new BufferedInputStream(this.getContentResolver.openInputStream(data.getData()))))
+            ivSrc(tmpBmp)
+        )
+
+      }
+      else if (requestCode == MENU_SEARCH_IMDB && resultCode == Activity.RESULT_OK) {
+        val extras = data.getExtras()
+        if (currentMovie.id.getOrElse("").trim.length == 0) {
+          currentMovie = new Movie()
+        }
+        currentMovie.imdb = Some(extras.getString("imdbId"))
+        currentMovie.title = extras.getString("titulo")
+        currentMovie.cover = Some(extras.getString("caratula"))
+        currentMovie.sinopsis = Some(extras.getString("sinopsis"))
+        currentMovie.thumb = Some(extras.getString("thumb"))
+        currentMovie.duration = extras.getString("duracion")
+        currentMovie.rating = extras.getFloat("puntuacion")
+        currentMovie.fullimdbId = Some(extras.getString("fullimdbId"))
+        if (currentMovie.cover.getOrElse("").length > 0) {
+          hasImage = true
+        }
+        else {
+          hasImage = false
+        }
+        rtRating.get.setRating(currentMovie.rating)
+        runUi(
+          (imgCover <~
+            (currentMovie.cover map {
+              srcImage(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+              //roundedImage(_, R.drawable.placeholder_circle, avatarSize, Some(R.drawable.placeholder_avatar_failed))
+            } getOrElse ivSrc(R.drawable.no_disponible))) ~
+            (txtSinopsis <~ tvText((currentMovie.sinopsis.getOrElse("")))) ~
+            (txtTitle <~ tvText(currentMovie.title)) ~
+            (txtDuration <~ tvText(currentMovie.duration))
+
 
         )
       }
-    }
-    else if (requestCode == MyUtils.TAKE_PICTURE) {
-      val o = new BitmapFactory.Options()
-      o.inSampleSize = 8
-
-      val dir = new File(MyUtils.STORAGE_IMAGES)
-      val output = new File(dir, MyUtils.TEMP_IMAGE)
-      val imageName = output.getAbsolutePath()
-      var tmpBmp = BitmapFactory.decodeFile(imageName, o)
-
-      if (tmpBmp.getWidth() > tmpBmp.getHeight()) {
-        val matrix = new Matrix()
-        matrix.postRotate(90)
-        tmpBmp = Bitmap.createBitmap(tmpBmp, 0, 0, tmpBmp.getWidth(), tmpBmp.getHeight(), matrix, true)
-      }
-      tmpBmp = Bitmap.createScaledBitmap(tmpBmp, imgCover.get.getWidth(), imgCover.get.getHeight(), true)
-      hasImage = true
-      runUi(
-        imgCover <~
-          ivSrc(tmpBmp)
-      )
-
-    }
-    else if (requestCode == MENU_SEARCH_IMDB && resultCode == Activity.RESULT_OK) {
-      val extras = data.getExtras()
-      if (currentMovie.id.getOrElse("").trim.length == 0) {
-        currentMovie = new Movie()
-      }
-      currentMovie.imdb = Some(extras.getString("imdbId"))
-      currentMovie.title = extras.getString("titulo")
-      currentMovie.cover = Some(extras.getString("caratula"))
-      currentMovie.sinopsis = Some(extras.getString("sinopsis"))
-      currentMovie.thumb = Some(extras.getString("thumb"))
-      currentMovie.duration = extras.getString("duracion")
-      currentMovie.rating = extras.getFloat("puntuacion")
-      currentMovie.fullimdbId = Some(extras.getString("fullimdbId"))
-      if (currentMovie.cover.getOrElse("").length > 0) {
-        hasImage = true
-      }
-      else {
-        hasImage = false
-      }
-      rtRating.get.setRating(currentMovie.rating)
-      runUi(
-        (imgCover <~
-          (currentMovie.cover map {
-            srcImage(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
-            //roundedImage(_, R.drawable.placeholder_circle, avatarSize, Some(R.drawable.placeholder_avatar_failed))
-          } getOrElse ivSrc(R.drawable.no_disponible))) ~
-          (txtSinopsis <~ tvText((currentMovie.sinopsis.getOrElse("")))) ~
-          (txtTitle <~ tvText(currentMovie.title)) ~
-          (txtDuration <~ tvText(currentMovie.duration))
-
-
-      )
     }
   }
 
@@ -257,7 +287,9 @@ with ComponentRegistryImpl {
   def cancelSearch: Unit = {
 
   }
-
+  def selectBarCode =  {
+    IntentIntegrator.initiateScan(this)
+  }
 
   def save: Unit = {
     progressBar.get.setVisibility(View.VISIBLE)
@@ -360,7 +392,7 @@ with ComponentRegistryImpl {
 
         )
       }
-      case Failure(t) => Toast.makeText(this,R.string.no_trailer_found,1000)
+      case Failure(t) => runUi {toast(R.string.no_cover_found)<~ fry}
     }
   }
   override def onOptionsItemSelected(item: MenuItem): Boolean = {
@@ -369,6 +401,7 @@ with ComponentRegistryImpl {
         this.setResult(Activity.RESULT_CANCELED)
         this.finish()
         true
+      case R.id.action_barcode => selectBarCode
       case R.id.action_updateCover => reloadCover
       case _ => super.onOptionsItemSelected(item)
 

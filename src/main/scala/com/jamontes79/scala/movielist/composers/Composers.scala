@@ -24,6 +24,7 @@ trait ViewComposer {
 
 trait DetailComposer {
   self: TypedFindView =>
+  lazy val nestedScrollView = Option(findView(TR.nestedScrollView))
   lazy val progressBar = Option(findView(TR.progressBar))
   lazy val cardView = Option(findView(TR.cardView))
   lazy val fabActionButton = Option(findView(TR.fabSave))

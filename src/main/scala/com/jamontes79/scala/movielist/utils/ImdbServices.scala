@@ -10,6 +10,7 @@ import com.jamontes79.scala.movielist.utils.json.entities.{ApiRootMovieDetail, A
 import com.jamontes79.scala.movielist.utils.json.{JsonRequest, JsonServicesComponent}
 import com.jamontes79.scala.movielist.utils.net.{NetRequest, NetServicesComponent}
 
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 /**
@@ -86,7 +87,15 @@ trait ImdbServices {
       imageRoot.posters.lift(0).get.file_path
     }
   }
-
+  def searchTitle(sku: String = ""): Future[String] = {
+    val url = "https://es.webuy.com/product.php?sku=" + sku + "&mode=sell"
+    for {
+      response <- netServices.getTitleFromSKU(NetRequest(url,true))
+    } yield {
+      Log.e("barcode si", response.content)
+      response.content
+    }
+  }
   def searchFilm(imdb: String = ""): Future[ApiRootMovieDetail] = {
     var url = ""
     url = IMDB_BASE_URL_SEARCH_FILM.replaceAll("#LANGUAGE#", Locale.getDefault().getLanguage()).replaceAll("#API#", API_KEY).replaceAll("#IMDB_ID#", imdb)

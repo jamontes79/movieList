@@ -29,7 +29,7 @@
     <string name="_preferences">Preferencias</string>
     <string name="_ok">Ok</string>
     <string name="_get_barcode">Código de barras</string>
-
+    <string name="no_cover_found">No se ha encontrado carátula</string>
     <string-array name="_formats">
         <item>DVD</item>
         <item>Blu-Ray</item>

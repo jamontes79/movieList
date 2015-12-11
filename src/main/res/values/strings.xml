@@ -105,7 +105,7 @@
     <string name="_showGrid">View grid</string>
     <string name="_showGallery">View gallery</string>
     <string name="_lowMemory">The device does not have enough memory to display the covers. Restarts the application</string>
-
+    <string name="no_cover_found">No cover found</string>
 
     <string name="action_share">Share</string>
     <string name="send_to">Send to...</string>

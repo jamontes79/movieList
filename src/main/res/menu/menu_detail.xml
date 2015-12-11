@@ -2,7 +2,9 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
+    <item android:id="@+id/action_barcode" android:title="@string/_barcode"
+          android:icon="@drawable/ic_barcode"
+          android:orderInCategory="200" app:showAsAction="never"/>
 
     <item android:id="@+id/action_updateCover" android:title="@string/action_updatecover"
           android:icon="@android:drawable/ic_menu_share"

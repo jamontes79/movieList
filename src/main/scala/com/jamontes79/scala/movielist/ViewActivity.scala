@@ -11,7 +11,6 @@ import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View.OnTouchListener
 import android.view.{Menu, MenuItem, MotionEvent, View}
-import android.widget.Toast
 import com.fortysevendeg.macroid.extras.ImageViewTweaks._
 import com.fortysevendeg.macroid.extras.ResourcesExtras._
 import com.fortysevendeg.macroid.extras.TextTweaks._
@@ -165,7 +164,7 @@ with ComponentRegistryImpl {
   def visitImdbMoviePage : Unit = {
 
     if (currentMovie.imdb.getOrElse("").length == 0) {
-      Toast.makeText(this,R.string.no_imdb_id_found,1000)
+      runUi {toast(R.string.no_imdb_id_found)<~ fry}
     }
     else {
       val imdbUrl = MyUtils.IMDB_BASE_URL + currentMovie.fullimdbId.get
@@ -188,10 +187,17 @@ with ComponentRegistryImpl {
     }
     searchTrailer(currentMovie.imdb.getOrElse(""),true).onComplete{
       case Success(url) => {
-        val imdbIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        this.startActivity(imdbIntent)
+        if (url.length > 0) {
+
+          val imdbIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url))
+          this.startActivity(imdbIntent)
+        }
+        else{
+
+          runUi {toast(R.string.no_trailer_found)<~ fry}
+        }
       }
-      case Failure(t) => Toast.makeText(this,R.string.no_trailer_found,1000)
+      case Failure(t) => runUi {toast(R.string.no_trailer_found)<~ fry}
     }
   }
 

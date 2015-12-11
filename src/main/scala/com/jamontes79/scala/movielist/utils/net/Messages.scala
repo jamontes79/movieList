@@ -7,5 +7,8 @@ case class NetRequest(url : String, forceDownload: Boolean)
 
 case class NetResponse(success: Boolean,
                        downloaded: Boolean)
+case class NetResponseExtended(success: Boolean,
+                               downloaded: Boolean,
+                               content:String)
 
 
