@@ -109,7 +109,7 @@ with ComponentRegistryImpl {
 
       (imgCover <~
         (currentMovie.cover map {
-          srcImageFile(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+          srcImageFile(_, R.drawable.placeholder_square, Some(R.drawable.no_disponible))
         } getOrElse ivSrc(R.drawable.no_disponible))) ~
         (txtTitle <~ tvText(currentMovie.title)) ~
 
@@ -261,7 +261,7 @@ with ComponentRegistryImpl {
         runUi(
           (imgCover <~
             (currentMovie.cover map {
-              srcImage(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+              srcImage(_, R.drawable.placeholder_square, Some(R.drawable.no_disponible))
               //roundedImage(_, R.drawable.placeholder_circle, avatarSize, Some(R.drawable.placeholder_avatar_failed))
             } getOrElse ivSrc(R.drawable.no_disponible))) ~
             (txtSinopsis <~ tvText((currentMovie.sinopsis.getOrElse("")))) ~
@@ -385,7 +385,7 @@ with ComponentRegistryImpl {
         runUi(
           (imgCover <~
             (currentMovie.cover map {
-              srcImage(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+              srcImage(_, R.drawable.placeholder_square, Some(R.drawable.no_disponible))
               //roundedImage(_, R.drawable.placeholder_circle, avatarSize, Some(R.drawable.placeholder_avatar_failed))
             } getOrElse ivSrc(R.drawable.no_disponible)))
 

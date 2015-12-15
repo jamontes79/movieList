@@ -25,6 +25,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
+
             >
 
             <ImageView
@@ -35,6 +36,7 @@
                 android:fitsSystemWindows="true"
                 android:src="@drawable/no_disponible"
                 app:layout_collapseMode="parallax"
+                android:background="?attr/selectableItemBackground"
                 />
 
             <android.support.v7.widget.Toolbar

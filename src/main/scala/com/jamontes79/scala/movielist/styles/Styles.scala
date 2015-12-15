@@ -17,6 +17,7 @@
 package com.jamontes79.scala.movielist.styles
 
 import android.graphics.Color
+import android.support.v7.widget.CardView
 import android.view.Gravity
 import android.widget.ImageView.ScaleType
 import android.widget.{FrameLayout, ImageView, LinearLayout, TextView}
@@ -26,11 +27,12 @@ import com.fortysevendeg.macroid.extras.ImageViewTweaks._
 import com.fortysevendeg.macroid.extras.LinearLayoutTweaks._
 import com.fortysevendeg.macroid.extras.ResourcesExtras._
 import com.fortysevendeg.macroid.extras.TextTweaks._
+import com.fortysevendeg.macroid.extras.ThemeExtras
 import com.fortysevendeg.macroid.extras.ViewTweaks._
 import com.jamontes79.scala.movielist.R
 import com.jamontes79.scala.movielist.utils.{IconTypes, PathMorphDrawable}
 import macroid.FullDsl._
-import macroid.{ContextWrapper, Tweak}
+import macroid.{ActivityContextWrapper, ContextWrapper, Tweak}
 
 import scala.language.postfixOps
 
@@ -88,12 +90,26 @@ trait Styles {
 }
 trait AdapterStyles {
 
-  def itemContentStyle(implicit context: ContextWrapper): Tweak[LinearLayout] =
+  def itemContentStyle(implicit activityContext: ActivityContextWrapper): Tweak[LinearLayout] = {
+
+
+    
     vMatchParent +
       llVertical +
       vPaddings(resGetDimensionPixelSize(R.dimen.padding_default)) +
-      vBackground(R.drawable.background_list_default) +
+      vBackground( ThemeExtras.themeGetDrawable(R.attr.selectableItemBackground).get) +
       llGravity(Gravity.CENTER_HORIZONTAL)
+  }
+  
+
+def cardStyle(implicit activityContext: ActivityContextWrapper): Tweak[CardView] =
+    vMatchWidth +
+      (ThemeExtras.themeGetDrawable(android.R.attr.selectableItemBackground) map flForeground getOrElse Tweak.blank)
+
+  def itemStyle: Tweak[LinearLayout] =
+    llVertical +
+      vMatchWidth
+
 
   def avatarStyle(implicit context: ContextWrapper): Tweak[ImageView] = {
     val avatarSize = resGetDimensionPixelSize(R.dimen.size_avatar)

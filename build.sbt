@@ -4,6 +4,7 @@ import Libraries.json._
 import Libraries.macroid._
 import Libraries.qr._
 import ReplacePropertiesGenerator._
+import Libraries.utils._
 import android.PromptPasswordsSigningConfig
 
 
@@ -39,6 +40,7 @@ libraryDependencies ++= Seq(
   aar(macroidExtras),
   playJson,
   picasso,
+  apprate,
   zxingCore,
   aar(zxingAndroid))
 
@@ -51,7 +53,7 @@ run <<= (run in Android).dependsOn(setDebugTask(true))
 
 apkSigningConfig in Android := Option(
   PromptPasswordsSigningConfig(
-    keystore = new File(Path.userHome.absolutePath + "/.android/signed.keystore"),
+    keystore = new File(Path.userHome.absolutePath + "/jamontes79.keystore.jks"),
     alias = "jamontes79"))
 
 packageRelease <<= (packageRelease in Android).dependsOn(setDebugTask(false))

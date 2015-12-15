@@ -45,7 +45,9 @@ object Libraries {
     // Google Actions, Google Analytics and Google Cloud Messaging
     lazy val playServicesBase = playServicesDep("play-services-base")
   }
-
+  object utils {
+    lazy val apprate = "com.github.codechimp-org.apprater" % "library" % Versions.apprateV
+  }
   object graphics {
     lazy val picasso = "com.squareup.picasso" % "picasso" % Versions.picassoV
     lazy val circleimageview = "de.hdodenhof" % "circleimageview"  % Versions.circleimageviewV

@@ -26,7 +26,7 @@
   <color name="secondary_text">#727272</color>
   <color name="icons">#212121</color>
   <color name="divider">#B6B6B6</color>
-  
+  <color name="control_highlight">#ff49cb94</color>
 
     <color name="color_control_highlight">#2F3C46</color>
 

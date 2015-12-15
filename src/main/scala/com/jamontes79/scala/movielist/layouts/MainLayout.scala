@@ -16,7 +16,7 @@
 
 package com.jamontes79.scala.movielist.layouts
 
-import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.{CardView, RecyclerView}
 import android.widget._
 import com.jamontes79.scala.movielist.styles.{AdapterStyles, Styles}
 import macroid.FullDsl._
@@ -30,12 +30,14 @@ class MoviesLayoutAdapter(implicit context: ActivityContextWrapper)
   val content = layout
 
   private def layout(implicit context: ActivityContextWrapper) = getUi(
+  l[CardView](
     l[LinearLayout](
       w[ImageView] <~ wire(cover) <~ avatarStyle,
       l[LinearLayout](
         w[TextView] <~ wire(name) <~ nameItemStyle
       ) <~ itemNoAvatarContentStyle
-    ) <~ itemContentStyle
+    ) <~ itemStyle
+    )<~ cardStyle
   )
 }
 

@@ -74,7 +74,8 @@ trait ListLayout
   )
   def loaded(): Ui[_] = (progressBar <~ vGone) ~
     (recyclerView <~ vVisible) ~
-    (placeholderContent <~ vGone)
+    (placeholderContent <~ vGone) ~
+    (fabAdd <~ vVisible)
   def loading(): Ui[_] = (progressBar <~ vVisible) ~
     (recyclerView <~ vGone) ~
     (placeholderContent <~ vGone)
@@ -93,7 +94,8 @@ trait ListLayout
 
   def adapter[VH <: RecyclerView.ViewHolder](adapter: RecyclerView.Adapter[VH]): Ui[_] = (progressBar <~ vGone) ~
     (placeholderContent <~ vGone) ~
-    (recyclerView <~ vVisible <~ rvAdapter(adapter))
+    (recyclerView <~ vVisible <~ rvAdapter(adapter)) ~
+    (fabAdd <~ vVisible)
 
   def srlRefreshing(refreshing: Boolean) = Tweak[SwipeRefreshLayout](_.setRefreshing(refreshing))
 

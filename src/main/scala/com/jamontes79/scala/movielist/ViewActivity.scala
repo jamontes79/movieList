@@ -109,7 +109,7 @@ with ComponentRegistryImpl {
         ~
         (imgCover <~
           (currentMovie.cover map {
-            srcImageFile(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+            srcImageFile(_, R.drawable.placeholder_square, Some(R.drawable.no_disponible))
           } getOrElse ivSrc(R.drawable.no_disponible))) ~
 
         (lblTitle <~ tvText(currentMovie.title) ) ~

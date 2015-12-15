@@ -21,11 +21,14 @@
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/background_app</item>
         <item name="android:colorBackground">@color/background_app</item>
-
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary_dark</item>
-        <item name="colorControlHighlight">@color/color_control_highlight</item>
+
+        <item name="colorControlHighlight">@color/control_highlight</item>
+
+        <item name="selectableItemBackground">@drawable/background_list_default</item>
+        <item name="android:selectableItemBackground">@drawable/background_list_default</item>
     </style>
 
     <style name="DialogAnimation">

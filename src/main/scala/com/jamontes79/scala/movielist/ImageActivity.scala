@@ -3,6 +3,7 @@ package com.jamontes79.scala.movielist
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.{ActivityCompat, ActivityOptionsCompat, FragmentActivity}
+import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.fortysevendeg.macroid.extras.FragmentExtras._
@@ -49,9 +50,14 @@ with MyUtils {
           id = Id.imageFragment,
           tag = Some(Tag.imageFragment)))
     }
+
+
   }
 
-
-
-
+  override def onPostCreate(savedInstanceState: Bundle): Unit = {
+    findFragmentByTag[ImageFragment](Tag.imageFragment) match {
+      case Some(f) => ViewCompat.setTransitionName(f.imageOnView.get, MyUtils.EXTRA_IMAGE)
+    }
+    super.onPostCreate(savedInstanceState)
+  }
 }

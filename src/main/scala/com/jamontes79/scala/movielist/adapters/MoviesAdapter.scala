@@ -59,7 +59,7 @@ class MoviesAdapter(var movies: ArrayBuffer[Movie], listener: RecyclerClickListe
     runUi(
       (viewHolder.avatar <~
         (pel.thumb map {
-          srcImageFile(_, R.drawable.placeholder_circle,  Some(R.drawable.no_disponible))
+          srcImageFile(_, R.drawable.placeholder_square,  Some(R.drawable.no_disponible))
         } getOrElse ivSrc(R.drawable.no_disponible))) ~
           (viewHolder.name <~ tvText(pel.title))
     )

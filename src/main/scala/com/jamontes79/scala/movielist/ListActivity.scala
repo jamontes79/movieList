@@ -14,6 +14,7 @@ import com.jamontes79.scala.movielist.layouts.MainLayout
 import com.jamontes79.scala.movielist.utils.MyUtils
 import macroid.FullDsl._
 import macroid._
+import org.codechimp.apprater.AppRater
 
 import scala.language.postfixOps
 
@@ -53,6 +54,7 @@ with OnQueryTextListener {
           id = Id.mainFragment,
           tag = Some(Tag.mainFragment)))
     }
+    AppRater.app_launched(this)
   }
 
   override def onNewIntent(intent: Intent): Unit = {

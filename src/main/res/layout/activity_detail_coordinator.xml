@@ -70,11 +70,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/lblTitle"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/_titile"/>
+
 
 
 
@@ -82,12 +78,19 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/txtTitle"
-                                android:layout_width="0dip"
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/title_input"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.75"/>
+                                android:layout_weight="0.75">
+                                <EditText
+                                    android:id="@+id/txtTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:hint="@string/_titile"/>
+                            </android.support.design.widget.TextInputLayout>
+
 
                             <ImageButton
                                 android:id="@+id/btnSearchImdb"
@@ -156,16 +159,17 @@
 
                                 </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/lblDuration"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_duration"></TextView>
 
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/duration_input"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
                                 <EditText
                                     android:id="@+id/txtDuration"
                                     android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"></EditText>
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/_duration"/>
+                                </android.support.design.widget.TextInputLayout>
 
 
                             </LinearLayout>
@@ -191,17 +195,19 @@
                             android:layout_weight="100"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/_sinopsis"/>
 
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/sinopsis_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/txtSinopsis"
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
                                 android:gravity="top"
-                                android:scrollbars="vertical"/>
+                                android:scrollbars="vertical"
+                                android:hint="@string/_sinopsis"/>
+                            </android.support.design.widget.TextInputLayout>
 
 
                         </LinearLayout>

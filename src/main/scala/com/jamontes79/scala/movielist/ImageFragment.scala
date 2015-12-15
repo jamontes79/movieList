@@ -11,6 +11,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.view._
 import com.fortysevendeg.macroid.extras.ImageViewTweaks._
 import com.jamontes79.scala.movielist.entities.Movie
@@ -62,11 +63,12 @@ setHasOptionsMenu(true)
 
         imageOnView <~
           (currentMovie.cover map {
-            srcImageFile(_, R.drawable.placeholder_circle, Some(R.drawable.no_disponible))
+            srcImageFile(_, R.drawable.placeholder_square, Some(R.drawable.no_disponible))
           } getOrElse ivSrc(R.drawable.no_disponible))
 
 
     )
+    ViewCompat.setTransitionName(imageOnView.get, MyUtils.EXTRA_IMAGE)
 
 
   }

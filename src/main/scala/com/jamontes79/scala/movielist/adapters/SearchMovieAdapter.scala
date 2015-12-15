@@ -53,7 +53,7 @@ class SearchMovieAdapter(movies: Seq[Movie], listener: RecyclerClickListenerSear
     runUi(
       (viewHolder.avatar <~
         (pel.cover map {
-          srcImage(_, R.drawable.placeholder_circle,  Some(R.drawable.no_disponible))
+          srcImage(_, R.drawable.placeholder_square,  Some(R.drawable.no_disponible))
         } getOrElse ivSrc(R.drawable.no_disponible))) ~
           (viewHolder.name <~ tvText(pel.title))
     )
