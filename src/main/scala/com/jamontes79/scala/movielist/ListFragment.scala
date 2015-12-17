@@ -14,7 +14,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.view.{LayoutInflater, View, ViewGroup}
+import android.view.{MenuItem, LayoutInflater, View, ViewGroup}
 import android.widget.ImageView
 import com.fortysevendeg.macroid.extras.RecyclerViewTweaks._
 import com.jamontes79.scala.movielist.adapters.{MoviesAdapter, RecyclerClickListener}
@@ -23,6 +23,7 @@ import com.jamontes79.scala.movielist.layouts.ListLayout
 import com.jamontes79.scala.movielist.utils.{ComponentRegistryImpl, ImdbServices, MyUtils}
 import macroid.FullDsl._
 import macroid.{ContextWrapper, Contexts, Ui}
+import org.codechimp.apprater.AppRater
 
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.ExecutionContext.Implicits._
@@ -38,6 +39,8 @@ with Contexts[Fragment]
 with ComponentRegistryImpl
 with ImdbServices
 with ListLayout {
+
+
   var moviesAdapter : MoviesAdapter = null
   var movieList: Array[Movie] = {
     Movie.loadAllMovies
@@ -118,7 +121,27 @@ with ListLayout {
     }
   }
 
+  override def onOptionsItemSelected(item: MenuItem): Boolean = {
+      item.getItemId match {
 
+        case R.id.action_share => shareApp
+        case R.id.action_rate => AppRater.rateNow(getActivity)
+        case _ => super.onOptionsItemSelected(item)
+
+      }
+      super.onOptionsItemSelected(item)
+
+
+  }
+
+  def shareApp: Unit = {
+    val shareIntent = new Intent();
+    shareIntent.setAction(Intent.ACTION_SEND);
+    shareIntent.putExtra(Intent.EXTRA_TEXT, getText(R.string.share_videodroid))
+    shareIntent.setType("text/plain")
+    startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.send_to)));
+
+  }
   def search(s : String): Unit = {
     if (movieList.length > 0) {
       var moviesTmp: ArrayBuffer[Movie] = new ArrayBuffer[Movie]()

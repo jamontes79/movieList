@@ -104,5 +104,6 @@
     <string name="generalMessageError">Se ha producido un error. Por favor pulsa en \"Recargar\" para reintentar</string>
     <string name="reload">Añadir Película</string>
     <string name="send_to">Enviar...</string>
-    <string name="share_videodroid">Descarga MovieList en Google Play https://play.google.com/store/apps/details?id=com.maraldesarrollos.videodroid</string>
+    <string name="action_rate">Puntua</string>
+    <string name="share_videodroid">Descarga MovieList en Google Play https://play.google.com/store/apps/details?id=com.jamontes79.scala.movielist</string>
 </resources>

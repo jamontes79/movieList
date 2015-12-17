@@ -8,7 +8,7 @@ import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.SearchView.OnQueryTextListener
-import android.view.Menu
+import android.view.{MenuItem, Menu}
 import com.fortysevendeg.macroid.extras.FragmentExtras._
 import com.jamontes79.scala.movielist.layouts.MainLayout
 import com.jamontes79.scala.movielist.utils.MyUtils
@@ -36,6 +36,7 @@ with MyUtils
 with OnQueryTextListener {
 
   override def onCreate(savedInstanceState: Bundle) = {
+    setTheme(R.style.AppTheme)
     super.onCreate(savedInstanceState)
     setContentView(layout)
     checkDataBase(this)
@@ -70,7 +71,13 @@ with OnQueryTextListener {
     }
   }
 
-override def onCreateOptionsMenu(menu: Menu): Boolean = {
+  override def onOptionsItemSelected(item: MenuItem): Boolean = {
+    findFragmentByTag[ListFragment](Tag.mainFragment) match {
+      case Some(f) => f.asInstanceOf[ListFragment].onOptionsItemSelected(item)
+    }
+  }
+
+  override def onCreateOptionsMenu(menu: Menu): Boolean = {
     getMenuInflater().inflate(R.menu.menu_list, menu)
     val searchView : SearchView = MenuItemCompat.getActionView( menu.findItem(R.id.action_search)).asInstanceOf[SearchView]
     searchView.setOnQueryTextListener(this)

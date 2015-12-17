@@ -128,23 +128,21 @@ case class Movie(
       " WHERE PELICULAID = '" + id.get + "'"
     DBUtil.m_appConnection.execSQL(sql)
 
-    cover match {
+    if (cover.getOrElse("").length > 0) {
 
-      case Some(p) => {
 
-        val dir = new File(MyUtils.STORAGE_IMAGES)
-        val source = new File(dir, id.get + ".png")
+      val dir = new File(MyUtils.STORAGE_IMAGES)
+      val source = new File(dir, id.get + ".png")
 
-        if (source.exists()) {
-            source.delete
-        }
-        val sourceThmb = new File(dir, id.get + "_th.png")
-        if (sourceThmb.exists()) {
-          sourceThmb.delete
-        }
+      if (source.exists()) {
+        source.delete
       }
-
+      val sourceThmb = new File(dir, id.get + "_th.png")
+      if (sourceThmb.exists()) {
+        sourceThmb.delete
+      }
     }
+
   }
 
 

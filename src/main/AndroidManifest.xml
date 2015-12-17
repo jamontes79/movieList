@@ -33,7 +33,9 @@
                        android:value=".ViewActivity"></meta-data>
         </activity>
         <activity android:name="com.jamontes79.scala.movielist.SearchActivity" android:label="@string/search"></activity>
-        <activity android:name="com.jamontes79.scala.movielist.ListActivity" android:label="@string/app_name">
+        <activity android:name="com.jamontes79.scala.movielist.ListActivity"
+                  android:label="@string/app_name"
+            android:theme="@style/AppTheme.BrandedLaunch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

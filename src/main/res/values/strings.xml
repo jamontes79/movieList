@@ -108,8 +108,9 @@
     <string name="no_cover_found">No cover found</string>
 
     <string name="action_share">Share</string>
+    <string name="action_rate">Rate</string>
     <string name="send_to">Send to...</string>
-    <string name="share_videodroid">Download MovieList at Google Play https://play.google.com/store/apps/details?id=com.maraldesarrollos.videodroid</string>
+    <string name="share_videodroid">Download MovieList at Google Play https://play.google.com/store/apps/details?id=com.jamontes79.scala.movielist</string>
 
     <string name="action_updatecover">Update cover</string>
     <string name="_titile">Title</string>
